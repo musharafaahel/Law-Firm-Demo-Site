@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo & Associates — Law Firm</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --cream: #f7f4ef;
+        --ink: #1a1713;
+        --mid: #6b6560;
+        --accent: #8b6f47;
+        --rule: #e0dbd3;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--ink);
+        font-weight: 300;
+        line-height: 1.6;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 6vw;
+        background: var(--cream);
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .nav-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.25rem;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--mid);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+
+      .nav-cta {
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        background: var(--ink);
+        color: var(--cream);
+        padding: 0.6rem 1.4rem;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+
+      .nav-cta:hover {
+        background: var(--accent);
+      }
+
+      /* HERO */
+      .hero {
+        padding: 16rem 6vw 10rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: end;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .hero-eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(3rem, 6vw, 5.5rem);
+        font-weight: 300;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+      }
+
+      .hero-title em {
+        font-style: italic;
+        color: var(--accent);
+      }
+
+      .hero-right {
+        padding-bottom: 0.5rem;
+      }
+
+      .hero-desc {
+        font-size: 1rem;
+        color: var(--mid);
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+        max-width: 38ch;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1.2rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: var(--ink);
+        color: var(--cream);
+        padding: 0.85rem 2rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.82rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background 0.2s;
+        display: inline-block;
+      }
+
+      .btn-primary:hover {
+        background: var(--accent);
+      }
+
+      .btn-ghost {
+        font-size: 0.82rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--mid);
+        text-decoration: none;
+        border-bottom: 1px solid var(--mid);
+        padding-bottom: 2px;
+        transition: color 0.2s, border-color 0.2s;
+      }
+
+      .btn-ghost:hover {
+        color: var(--ink);
+        border-color: var(--ink);
+      }
+
+      /* STATS */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .stat {
+        padding: 3.5rem 6vw;
+        border-right: 1px solid var(--rule);
+      }
+      .stat:last-child {
+        border-right: none;
+      }
+
+      .stat-number {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 3.5rem;
+        font-weight: 300;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--mid);
+      }
+
+      /* PRACTICE AREAS */
+      .section {
+        padding: 6rem 6vw;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        font-weight: 300;
+      }
+
+      .section-sub {
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--mid);
+      }
+
+      .practices {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+      }
+
+      .practice {
+        padding: 2.5rem 2rem 2.5rem 0;
+        border-right: 1px solid var(--rule);
+        padding-right: 2.5rem;
+        margin-right: 2.5rem;
+      }
+
+      .practice:last-child {
+        border-right: none;
+        margin-right: 0;
+        padding-right: 0;
+      }
+
+      .practice-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.9rem;
+        color: var(--accent);
+        margin-bottom: 1.2rem;
+      }
+
+      .practice-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 0.8rem;
+        line-height: 1.2;
+      }
+
+      .practice-desc {
+        font-size: 0.9rem;
+        color: var(--mid);
+        line-height: 1.7;
+      }
+
+      /* TEAM */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+
+      .team-card {
+        position: relative;
+      }
+
+      .team-img {
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: #e8e3db;
+        margin-bottom: 1.2rem;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .team-img-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 3rem;
+        color: #c5bdb3;
+      }
+
+      .team-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.3rem;
+        font-weight: 400;
+      }
+
+      .team-role {
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-top: 0.3rem;
+      }
+
+      /* QUOTE */
+      .quote-section {
+        padding: 7rem 6vw;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 4rem;
+        align-items: center;
+        border-bottom: 1px solid var(--rule);
+        background: var(--ink);
+        color: var(--cream);
+      }
+
+      .quote-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #9e9890;
+      }
+
+      .quote-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.6rem, 3vw, 2.6rem);
+        font-weight: 300;
+        line-height: 1.4;
+        font-style: italic;
+      }
+
+      .quote-attr {
+        margin-top: 1.5rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        color: #9e9890;
+      }
+
+      /* CONTACT */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+      }
+
+      .contact-info h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 3.5vw, 3.2rem);
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .contact-info p {
+        color: var(--mid);
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+        max-width: 36ch;
+      }
+
+      .contact-detail {
+        margin-bottom: 0.8rem;
+        font-size: 0.88rem;
+        color: var(--mid);
+      }
+
+      .contact-detail strong {
+        font-weight: 500;
+        color: var(--ink);
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 0.2rem;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .form-group label {
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--mid);
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid var(--rule);
+        padding: 0.6rem 0;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.95rem;
+        color: var(--ink);
+        outline: none;
+        transition: border-color 0.2s;
+        width: 100%;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        border-color: var(--ink);
+      }
+
+      .form-group textarea {
+        resize: none;
+        height: 90px;
+      }
+
+      /* FOOTER */
+      footer {
+        padding: 2.5rem 6vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--rule);
+      }
+
+      .footer-logo {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        color: var(--ink);
+      }
+
+      .footer-copy {
+        font-size: 0.75rem;
+        color: var(--mid);
+        letter-spacing: 0.06em;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .footer-links a {
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--mid);
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        color: var(--ink);
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-eyebrow {
+        animation: fadeUp 0.6s ease 0.1s both;
+      }
+      .hero-title {
+        animation: fadeUp 0.7s ease 0.2s both;
+      }
+      .hero-desc {
+        animation: fadeUp 0.7s ease 0.35s both;
+      }
+      .hero-actions {
+        animation: fadeUp 0.7s ease 0.45s both;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 10rem;
+        }
+        .stats {
+          grid-template-columns: 1fr;
+        }
+        .stat {
+          border-right: none;
+          border-bottom: 1px solid var(--rule);
+        }
+        .practices {
+          grid-template-columns: 1fr;
+        }
+        .practice {
+          border-right: none;
+          border-bottom: 1px solid var(--rule);
+          margin-right: 0;
+          padding-right: 0;
+        }
+        .team-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .quote-section {
+          grid-template-columns: 1fr;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .nav-links {
+          display: none;
+        }
+        footer {
+          flex-direction: column;
+          gap: 1.5rem;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a class="nav-logo" href="#">Demo & Associates</a>
+      <ul class="nav-links">
+        <li><a href="#practice">Practice Areas</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="nav-cta" href="#contact">Book a Consultation</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <p class="hero-eyebrow">Established 1987 · New York</p>
+        <h1 class="hero-title">
+          Counsel<br />
+          you can <em>trust.</em><br />
+          Results that<br />matter.
+        </h1>
+      </div>
+      <div class="hero-right">
+        <p class="hero-desc">
+          We are a full-service law firm dedicated to providing exceptional
+          legal representation. Our attorneys bring decades of experience and an
+          unwavering commitment to our clients' interests.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#contact">Schedule a Consultation</a>
+          <a class="btn-ghost" href="#practice">Our Practice Areas</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number">35+</div>
+        <div class="stat-label">Years in Practice</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">1,200+</div>
+        <div class="stat-label">Cases Resolved</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+
+    <!-- PRACTICE AREAS -->
+    <section class="section" id="practice">
+      <div class="section-header">
+        <h2 class="section-title">Practice Areas</h2>
+        <span class="section-sub">What We Do</span>
+      </div>
+      <div class="practices">
+        <div class="practice">
+          <div class="practice-num">01</div>
+          <div class="practice-name">Corporate & Business Law</div>
+          <p class="practice-desc">
+            Advising businesses from formation through every stage of growth —
+            contracts, mergers, acquisitions, and compliance.
+          </p>
+        </div>
+        <div class="practice">
+          <div class="practice-num">02</div>
+          <div class="practice-name">Litigation & Dispute Resolution</div>
+          <p class="practice-desc">
+            Strategic advocacy in court and alternative dispute resolution to
+            protect your rights and achieve favorable outcomes.
+          </p>
+        </div>
+        <div class="practice">
+          <div class="practice-num">03</div>
+          <div class="practice-name">Estate Planning & Trusts</div>
+          <p class="practice-desc">
+            Comprehensive planning to preserve your legacy, protect your assets,
+            and provide for the people you care about most.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section" id="team">
+      <div class="section-header">
+        <h2 class="section-title">Our Attorneys</h2>
+        <span class="section-sub">The Team</span>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-img">
+            <div class="team-img-placeholder">JH</div>
+          </div>
+          <div class="team-name">James Harmon</div>
+          <div class="team-role">Founding Partner · Corporate Law</div>
+        </div>
+        <div class="team-card">
+          <div class="team-img">
+            <div class="team-img-placeholder">SC</div>
+          </div>
+          <div class="team-name">Sarah Chen</div>
+          <div class="team-role">Senior Partner · Litigation</div>
+        </div>
+        <div class="team-card">
+          <div class="team-img">
+            <div class="team-img-placeholder">MP</div>
+          </div>
+          <div class="team-name">Marcus Price</div>
+          <div class="team-role">Partner · Estate Planning</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="quote-section">
+      <div class="quote-label">Our Philosophy</div>
+      <div>
+        <p class="quote-text">
+          "Every client deserves more than legal expertise — they deserve an
+          advocate who understands what is truly at stake."
+        </p>
+        <p class="quote-attr">— James Harmon, Founding Partner</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Let's discuss your legal matter.</h2>
+          <p>
+            Our initial consultation is confidential and obligation-free. We'll
+            listen carefully and provide honest guidance on your options.
+          </p>
+          <div class="contact-detail">
+            <strong>Phone</strong>
+            +1 (212) 555 0192
+          </div>
+          <div class="contact-detail">
+            <strong>Email</strong>
+            info@harmonlaw.com
+          </div>
+          <div class="contact-detail">
+            <strong>Address</strong>
+            350 Fifth Avenue, Suite 4100<br />New York, NY 10118
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="James" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="james@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Practice Area</label>
+            <select>
+              <option value="">Select an area of interest</option>
+              <option>Corporate & Business Law</option>
+              <option>Litigation & Dispute Resolution</option>
+              <option>Estate Planning & Trusts</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Brief Description</label>
+            <textarea
+              placeholder="Please briefly describe your legal matter..."
+            ></textarea>
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="btn-primary"
+              style="border: none; cursor: pointer; font-family: inherit"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">Demo & Associates</div>
+      <p class="footer-copy">
+        © 2025 Demo & Associates LLP. All rights reserved.
+      </p>
+      <ul class="footer-links">
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Sitemap</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>
